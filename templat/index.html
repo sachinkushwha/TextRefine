@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contenar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .contenar form textarea{
+            height: 150px;
+            width: 120vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenar">
+   <h1>enter your text here</h1>
+   <form action="/removepuce" method="post">
+    {% csrf_token %}
+    <textarea name="text" id=""></textarea><br>
+    
+    <input type="checkbox"name='removepuce' id="remove">
+    <label for="remove">remove panchution</label><br>
+
+    <input type="checkbox" name="capitlize" id="capitlize">
+    <label for="capitlize">UPPERCASE</label><br>
+
+    <input type="checkbox" name="newlineremove" id="newlineremove">
+    <label for="newlineremove">remove newline</label><br>
+
+    <input type="checkbox" name="removeextraspace" id="removeextraspace">
+    <label for="removeextraspace">remove extras pace</label><br>
+
+    <input type="checkbox" name="charcount" id="charcount">
+    <label for="charcount">count charactor</label><br>
+
+    <button type="submit">analyze text</button>
+   </form>
+    </div>
+</body>
+</html>
