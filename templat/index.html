@@ -3,44 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TextRefine</title>
     <style>
-        .contenar{
+        .contenar {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .contenar form {
+            display: flex;
             flex-direction: column;
         }
-        .contenar form textarea{
+        .contenar form textarea {
             height: 150px;
-            width: 120vh;
+            width: 80vw;
+            max-width: 100%;
+            margin-bottom: 20px; /* Space below textarea */
+        }
+        .contenar form .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .contenar form input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .contenar form label {
+            font-size: 16px;
+            color: #000;
+            margin-right: 20px; /* Space between checkboxes and labels */
+        }
+        .contenar form button {
+            width: fit-content; /* Adjust button width */
+            padding: 10px 20px; /* Adjust padding for button size */
+            font-size: 16px; /* Adjust font size */
+            margin-top: 20px; /* Space above button */
+        }
+        @media (max-width: 768px) {
+            .contenar form textarea {
+                width: 90vw;
+                height: 120px;
+            }
+            .contenar form button {
+                width: auto; /* Ensure button size is auto on mobile */
+            }
         }
     </style>
 </head>
 <body>
     <div class="contenar">
-   <h1>enter your text here</h1>
-   <form action="/removepuce" method="post">
-    {% csrf_token %}
-    <textarea name="text" id=""></textarea><br>
-    
-    <input type="checkbox"name='removepuce' id="remove">
-    <label for="remove">remove panchution</label><br>
+        <h1>Enter your text here</h1>
+        <form action="/removepuce" method="post">
+            {% csrf_token %}
+            <textarea name="text" id=""></textarea>
 
-    <input type="checkbox" name="capitlize" id="capitlize">
-    <label for="capitlize">UPPERCASE</label><br>
+            <div class="form-group">
+                <input type="checkbox" name='removepuce' id="remove">
+                <label for="remove">Remove panchution</label>
+            </div>
 
-    <input type="checkbox" name="newlineremove" id="newlineremove">
-    <label for="newlineremove">remove newline</label><br>
+            <div class="form-group">
+                <input type="checkbox" name="capitlize" id="capitlize">
+                <label for="capitlize">UPPERCASE</label>
+            </div>
 
-    <input type="checkbox" name="removeextraspace" id="removeextraspace">
-    <label for="removeextraspace">remove extras pace</label><br>
+            <div class="form-group">
+                <input type="checkbox" name="newlineremove" id="newlineremove">
+                <label for="newlineremove">Remove newline</label>
+            </div>
 
-    <input type="checkbox" name="charcount" id="charcount">
-    <label for="charcount">count charactor</label><br>
+            <div class="form-group">
+                <input type="checkbox" name="removeextraspace" id="removeextraspace">
+                <label for="removeextraspace">Remove extra space</label>
+            </div>
 
-    <button type="submit">analyze text</button>
-   </form>
+            <div class="form-group">
+                <input type="checkbox" name="charcount" id="charcount">
+                <label for="charcount">Count characters</label>
+            </div>
+
+            <button type="submit">Analyze text</button>
+        </form>
     </div>
 </body>
 </html>
